@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>  
+</head>
+<body>
+<div id="wrap">
+  
+  <h3>엘리먼트의 존재 여부 토글</h3>
+  <div id="app-3">
+    <p v-if="seen">now, you can see me</p>
+  </div>
+  
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+  
+  <div id="desc">
+  콘솔에서 <span class="tag">app4.todos.push({ text: 'New item' })</span>를 입력하면 새 항목이 추가되는지 확인
+  </div>
+</div>
+
+<script>
+  var app3 = new Vue({
+    el: '#app-3',
+    data: {
+      seen : true
+    }
+  })
+  var app4 = new Vue ({
+    el: "#app-4",
+    data : {
+      todos: [
+        { text: '일어나기'},
+        { text: '출근하기'},
+        { text: '퇴근하기기'}
+      ]
+    }
+  })
+</script>
+</body>
+</html>
