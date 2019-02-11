@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>  
+</head>
+<body>
+<div id="wrap">
+  <h3>보간법(Interpolation)</h3>  
+  <p>Using mustaches: {{ rawHtml }}</p>
+  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <hr>
+  <h3>디렉티브</h3>
+  <div class="desc">
+    디렉티브는 <em>v- 접두사가 있는 특수 속성</em>입니다. 디렉티브 속성 값은 단일 JavaScript 표현식 이 됩니다. (나중에 설명할 v-for는 예외입니다.) <em>디렉티브의 역할은 표현식의 값이 변경될 때 사이드이펙트를 반응적으로 DOM에 적용하는 것</em> 입니다. 
+  </div> 
+  <br>
+  <h4>전달인자</h4>
+  <div class="desc"><span class="tag">v-bind:href="url</span>에서 <span class="tag">href</span>는 전달인자로, 엘리먼트의 href 속성을 표현식 url의 값에 바인드하는 v-bind 디렉티브에게 알려줌
+  </div>
+  <br>
+  <h4>수식어</h4>
+  &lt;form v-on:submit.prevent="onSubmit"&gt; ... &lt;/form&gt;
+  <div class="desc">
+    수식어는 점으로 표시되는 특수 접미사 <br>
+    <span class="tag">.prevent</span> 수식어는 트리거된 이벤트에서 <span class="span">event.preventDefault()</span>를 호출하도록 v-on 디렉티브에게 알려줌
+  </div>
+  <hr>  
+  <h3>약어</h3>  
+  <div class="desc">
+    <span class="tag">v-</span> 접두사는 템플릿의 Vue 특정 속성을 식별하기 위한 시각적인 신호 역할을 합니다. <br>
+    Vue.js가 모든 템플릿을 관리하는 SPA를 만들 때 v- 접두어의 필요성이 떨어집니다. 따라서 가장 자주 사용되는 두개의 디렉티브인 <span class="tag">v-bind</span>와 <span class="tag">v-on</span>에 대해 특별한 약어를 제공
+  </div>
+    <br>
+    <h4>v-bind 약어</h4>
+    전체문법 : &lt;a v-bind:href="url"&gt; ... &lt;/a&gt; <br>
+    약어 : &lt;a :href="url"&gt; ... &lt;/a&gt;
+    <br>
+    <h4>v-on 약어</h4>
+    전체문법 : &lt;a v-on:click="doSomething"&gt; ... &lt;/a&gt; <br>
+    약어 : &lt;a @click="doSomething": &gt; ... &lt;/a&gt;    
+  
+
+
+
+</div>  <!-- // wrap -->
+
+<script>
+ var vm = new Vue ({
+  // write
+ })
+</script>
+</body>
+</html>

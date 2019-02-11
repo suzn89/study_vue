@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>  
+  <!-- 코드하이라이터 -->
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/androidstudio.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="wrap">
+  <h3>HTML 클래스 바인딩하기</h3>  
+  Vue는 class와 style에 v-bind를 사용할 때 특별히 향상된 기능을 제공합니다. 표현식은 문자열 이외에 객체 또는 배열을 이용할 수 있습니다.
+
+  <h4>객체구문</h4>
+  
+  <pre><code class="html">
+    &lt;div v-bind:class="{ active: isActive }"&gt;&lt;/div&gt;
+    &lt;div class="static"
+        v-bind:class="{ active: isActive, 'text-danger': hasError }"&gt;
+    &lt;/div&gt;
+  </code></pre>
+
+  <div v-bind:class="{ active: isActive }">클래스 렌더링 상태확인</div>
+  <div class="static"
+    v-bind:class="{ active: isActive, 'text-danger': hasError }">클래스 렌더링 상태확인2
+  </div>
+  
+  <div class="desc"><span class="tag">active</span> 클래스의 존재 여부가 데이터 속성 <span class="tag">isActive</span> 의 참 속성에 의해 결정되는 것을 의미합니다. <br> 객체에 필드가 더 있으면 여러 클래스를 토글 할 수 있습니다. 또한 <span class="tag">v-bind:class</span> 디렉티브는 일반 class 속성과 공존할 수 있습니다.  </div>
+
+  <br>
+  <div v-bind:class="classObject">렌더링 상태 확인</div>
+
+  <h4>배열 구문</h4>
+  클래스명을 배열 형식으로도 전달이 가능하다.
+
+  <pre><code class="html">
+      &lt;div v-bind:class="[activeClass, errorClass]"&gt;&lt;/div&gt;
+  </code></pre>
+
+  <div id="test" v-bind:class="[activeClass, errorClass]">클래스명 렌더링 확인</div>
+  <br>
+  <pre><code class="html">
+  &lt;div v-bind:class="[isActive ? activeClass : '', errorClass]"&gt;&lt;/div&gt;
+
+  // 여러 조건부 클래스 사용시 복잡해지므로 배열구문 내에서 객체 구문 사용가능
+  &lt;div v-bind:class="[{ active: isActive }, errorClass]"&gt;&lt;/div&gt;
+  </code></pre>
+  <div class="desc">항상 <span class="tag">errorClass</span>를 적용하고 <span class="tag">isActive</span>가 true일 때만 <span class="tag">activeClass</span>를 적용합니다.</div>
+
+  <hr>
+
+  <h3>인라인 스타일 바인딩</h3>
+
+  <h4>객체 구문</h4>
+  <span class="tag">v-bind:style</span>
+  <div id="el05" v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">v-bind:style</div>
+  <script>
+    var vm5 = new Vue ({
+      el: '#el05',
+      data: {
+        activeColor: 'red',
+        fontSize: 30
+      }
+    })
+  </script>
+  
+  더욱 간결하게 작성할 수 있다. <br>
+  <div id="el06" v-bind:style="styleObject">스타일 객체에 직접 바인딩하여 템플릿을 간결하게</div>  
+  <script>
+    var vm6 = new Vue ({
+      el: '#el06',
+      data: {
+        styleObject: {
+          color: 'blue',
+          fontSize: '22px'
+        }
+      }      
+    })
+  </script>
+
+  <h4>배열 구문</h4>
+  <span class="tag">v-bind:style</span>은 같은 스타일의 엘리먼트 안에 여러개의 스타일객체 사용이 가능 <br>
+  <b>예시</b><br>
+  <pre><code>
+  &lt;div v-bind:style="[baseStyles, overridingStyles]"&gt;&lt;/div&gt;  
+  </code></pre>
+  <div id="el07" v-bind:style="[baseStyles, overridingStyles]">여러개 스타일객체 이용한 인라인 스타일</div>
+  <script>
+  var vm7 = new Vue ({
+    el: '#el07',
+    data: {
+      baseStyles : {
+        color:'#cccccc'        
+      },
+      overridingStyles: {
+        fontSize: '20px',
+        fontWeight: 'bold'
+      }
+    }
+  })
+  </script>
+
+  
+
+
+
+
+</div>  <!-- // wrap -->
+
+
+<script>
+var vm = new Vue ({
+  // write
+  el: '.static',
+  data: {
+    isActive: true,
+    hasError: false
+  }
+})
+
+var vm1 = new Vue ({
+  el: '.classObject',
+  data: {
+  isActive: true,
+  error: null
+  },
+  computed: {
+    classObject: function () {
+      return {
+        active: this.isActive && !this.error,
+        'text-danger': this.error && this.error.type === 'fatal'
+      }
+    }
+  }
+})
+
+// 배열구문
+var vm = new Vue ({
+  el: '#test',
+  data: {
+    activeClass: 'active',
+    errorClass: 'text-danger'
+  }
+})
+
+</script>
+</body>
+</html>

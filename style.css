@@ -1,8 +1,10 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR');
-body { font-family: 'Noto Serif KR', serif; color:#444444;}
+body { font-family: 'Noto Serif KR', serif; color:#444444; padding-bottom: 300px;}
 #wrap { width:800px;}
 h3 { margin-top:30px; padding-bottom:15px; border-bottom:1px solid #dadada;}
 .tag { font-size:13px; font-family: Arial, Helvetica, sans-serif; color:#42b983; padding:3px; border-radius: 3px; background:#e1e1e1;}
 #desc { width:100%; padding:15px; background:#fafafa; border:1px solid #dadada; box-sizing: border-box;}
+.desc { width:100%; padding:15px; background:#fafafa; border:1px solid #dadada; box-sizing: border-box;}
 em { color:#e96900; font-style: normal;}
+hr { margin:50px 0;}
