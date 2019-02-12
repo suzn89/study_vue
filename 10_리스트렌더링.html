@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>  
+  <!-- 코드하이라이터 -->
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/androidstudio.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="wrap">
+  <h3>v-for로 엘리먼트에 배열 매핑하기</h3>  
+  <ul>
+    <li><span class="tag">v-for</span> 디렉티브를 사용하여 배열을 기반으로 리스트를 렌더링</li>
+    <li><span class="tag">v-for</spanc> 디렉티브는 <span class="tag">item in items</span> 형태로 특별한 문법이 필요</li>
+    <li><span class="tag">items</span>는 원본 데이터 배열이고</li>
+    <li><span class="tag">item</span>은 반복되는 배열 엘리먼트의 별칭</li>
+    <li><span class="tag">item of items</span>를 구분자로 사용할수 있음</li>
+  </ul>
+  
+  <h4>기본사용방법</h4>
+  <ul id="example-1">
+    <li v-for="item in items">
+      {{ item.message }}
+    </li>
+  </ul>
+  <script>
+    var vm = new Vue ({
+      el: '#example-1',
+      data: {
+        items: [
+          { message: 'first'},
+          { message: 'second'}
+        ]
+      }
+    })
+  </script>
+  <hr>
+
+  <h3>v-for와 객체</h3>
+  <ul id="v-for-object" class="demo">
+    <li v-for="value in object">
+      {{ value }}
+    </li>
+  </ul>
+
+  <div id="v-for-object" v-for="(value, key, index) in object">
+  {{ index }}. {{ key }} : {{ value }}
+  </div>
+  
+  <script>
+  var vm1 = new Vue ({
+    el: '#v-for-object',
+    data: {
+      object: {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30
+      }
+    }
+  })
+  </script>
+  <hr>
+  <h3>Key</h3>
+  <pre><code>
+  &lt;div v-for="item in items" :key="item.id"&gt;
+  &lt;!-- content --&gt;
+  &lt;/div&gt;
+  </code></pre>
+  
+  <div class="desc">
+      반복되는 DOM 내용이 단순하지 않거나 의도적인 성능 향상을 위해 기본 동작에 의존하지 않는한 가능하면 언제나 <span class="tag">v-for</span>에 <span class="tag">key</span>를 추가하는 것이 좋습니다.
+  </div>
+
+  <hr>
+
+  <h3>배열변경감지</h3>
+  <h4>변이 메소드</h4>
+  <ul>
+    <li><span class="tag">push()</span></li>
+    <li><span class="tag">pop()</span></li>
+    <li><span class="tag">shift()</span></li>
+    <li><span class="tag">unshift()</span></li>
+    <li><span class="tag">splice()</span></li>
+    <li><span class="tag">sort()</span></li>
+    <li><span class="tag">reverse()</span></li>
+  </ul>
+
+</div> <!-- // wrap -->
+</body>
+</html>

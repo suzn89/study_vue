@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>  
+  <!-- 코드하이라이터 -->
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/androidstudio.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="wrap">
+  <h3>v-if</h3>  
+  <h1 v-if="ok">Yes</h1>
+  <h1 v-if="ok">Yes</h1>
+  <h1 v-else>No</h1>
+
+  <h4>&lt;template&gt;에 v-if을 갖는 조건부 그룹 만들기</h4>
+  디렉티브는 하나의 엘리먼트에만 추가할 수있다. 여러개의 엘리먼트를 트랜지션 하려면, template를 사용하자. <br>
+
+  <pre><code class="html">
+  &lt;template v-if="ok"&gt;
+    &lt;h1&gt;Title&lt;/h1&gt;
+    &lt;p&gt;Paragraph 1&lt;/p&gt;
+    &lt;p&gt;Paragraph 2&lt;/p&gt;
+  &lt;/template&gt;
+  </code></pre>  
+
+  <h1 v-show="ok">안녕하세요!</h1>
+
+  <h4>v-if vs v-show</h4>
+  <div class="desc">
+    일반적으로 <span class="tag">v-if</span>는 토글 비용이 높고 <span class="tag">v-show</span>는 초기 렌더링 비용이 더 높습니다. 매우 자주 바꾸기를 원한다면 <span class="tag">v-show</span>를, 런타임 시 조건이 바뀌지 않으면 <span class="tag">v-if</span>를 권장합니다.
+  </div>
+
+</div> <!-- // wrap -->
+</body>
+</html>
